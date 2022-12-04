@@ -43,7 +43,7 @@ In this case, you will have different firmware each time you want to burn your p
 - [Python](https://www.python.org/downloads/)
 - [PyMakr vscode extension](https://marketplace.visualstudio.com/items?itemName=pycom.Pymakr)
 
-#### 2.2 How to use
+#### 2.2 BootStrap
 
 1. Create a project with the PyMakr extension
 2. write some code
@@ -58,3 +58,54 @@ This project work with the [Rp-hal rust](https://github.com/rp-rs/rp-hal/tree/ma
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [Rust-analyzer vscode extension](https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer)
+
+#### 3.2 BootStrap
+
+You can either start with a blank project or by using one of the example folder like `day2-rust`.
+
+If you want to start with a blank project, you can do the following:
+
+1. Create a new project `cargo init` in a blank folder.
+2. Add the following to your `Cargo.toml` file under dependencies:
+
+```toml
+[dependencies]
+rp-pico = "0.5.0"
+cortex-m = "0.7.2"
+embedded-hal = "0.2.7"
+cortex-m-rt = "0.7.2"
+panic-halt = "0.2.0"
+```
+
+3. Add the configuration to your .cargo/config.toml file (you can copy paste the one from the example folder). This will allow you to build and package your project in a .uf2 file.
+
+```toml
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "elf2uf2-rs"
+rustflags = [
+"-C", "link-arg=-Tlink.x",
+]
+
+[build]
+target = "thumbv6m-none-eabi"
+
+[env]
+DEFMT_LOG = "debug"
+```
+
+4. You can use the following code in your main.rs:
+
+```rust
+#![no_std]
+#![no_main]
+
+use panic_halt as _;
+use rp_pico::entry;
+
+#[entry]
+fn main() -> ! {
+}
+
+```
+
+5. Enjoy!
