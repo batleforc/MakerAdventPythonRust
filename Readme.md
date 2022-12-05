@@ -111,3 +111,7 @@ fn main() -> ! {
 ```
 
 5. Enjoy!
+
+#### 3.3 Useful link
+
+- [PIO EXEMPLE](https://github.com/rp-rs/rp-hal/blob/dfc790b207eb9a10a3f75e3522d0a90b7ef50891/boards/rp-pico/examples/pico_pio_pwm.rs#L78)
