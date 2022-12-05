@@ -54,6 +54,8 @@ In this case, you will have different firmware each time you want to burn your p
 
 This project work with the [Rp-hal rust](https://github.com/rp-rs/rp-hal/tree/main/boards/rp-pico) crate. It provide almost everything you need to work with the pico board.
 
+/!\ Starting from day 4, the project include the serial workflow. You will need a serial terminal like [Putty](https://www.putty.org/) to see the output of the program.
+
 #### 3.1 Needed
 
 - [Rust](https://www.rust-lang.org/tools/install)
